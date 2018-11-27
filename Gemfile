@@ -9,6 +9,9 @@ gem 'rails_admin', '~> 0.8.1'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 
+#simple form
+gem 'simple_form', '~> 4.0'
+
 # for download
 gem 'paperclip'
 

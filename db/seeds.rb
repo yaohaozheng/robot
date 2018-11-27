@@ -6,7 +6,16 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 # test by zhangfei and peng
-
+User.create!(
+  name: "admin",
+  email: "admin@test.com",
+  password: 'password',
+  role: Faker::Number.between(1, 4),
+  sex: ['male', 'female'].sample,
+  phonenumber: Faker::PhoneNumber.phone_number,
+  status: Faker::Company.profession,
+  admin: true
+  )
 (1..100).each do |index|
   User.create(
       name: "user#{index}",

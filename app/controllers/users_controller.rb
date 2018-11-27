@@ -1,9 +1,16 @@
 class UsersController < ApplicationController
   include SessionsHelper
   before_action :set_user, except: [:index, :new, :index_json]
-  before_action :logged_in, only: [:show]
+  before_action :logged_in, only: [:show, :index]
   before_action :correct_user, only: :show
+  before_action :admin_user,     only: :destroy
+  # before_action :logged_in_user, only: [:index, :edit, :update]
 
+  def index
+    # @users = User.all
+    # 使用分页
+    @users = User.paginate(page: params[:page])
+  end
   def new
     @user=User.new
   end
@@ -21,9 +28,11 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def update
@@ -36,6 +45,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    @user = User.find(params[:id])
     @user.destroy
     redirect_to users_path(new: false), flash: {success: "用户删除"}
   end
@@ -75,5 +85,8 @@ class UsersController < ApplicationController
       redirect_to root_path, flash: {:danger => '没有找到此用户'}
     end
   end
-
+  # Confirms an admin user.
+  def admin_user
+    redirect_to(root_url) unless current_user.admin?
+  end
 end
