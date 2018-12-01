@@ -5495,3 +5495,19 @@ Completed 200 OK in 128ms (Views: 125.7ms | ActiveRecord: 0.0ms)
 
 
 Started GET "/assets/login.jpg" for 127.0.0.1 at 2018-11-30 05:23:33 -0800
+
+
+Started GET "/" for 127.0.0.1 at 2018-11-30 21:12:46 -0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomesController#home as HTML
+  Rendered homes/home.html.erb within layouts/application (29.7ms)
+  Rendered layouts/_login_panel.html.erb (4.9ms)
+  Rendered layouts/_header.html.erb (20.4ms)
+  Rendered layouts/_content.html.erb (2.1ms)
+Completed 200 OK in 4186ms (Views: 4038.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-10ad0916cf31256fe71785e8dc9cc297a96b1cdf7b74aeb61711199b9a3d003f.js?body=1" for 127.0.0.1 at 2018-11-30 21:12:50 -0800
+
+
+Started GET "/assets/login.jpg" for 127.0.0.1 at 2018-11-30 21:12:50 -0800
