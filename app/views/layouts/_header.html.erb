@@ -10,22 +10,16 @@
     <ul class="nav navbar-nav navbar-right">
 
       <% if current_user %>
+          <%# 管理员显示项 %>
           <% if current_user.admin? %>
             <li><%= link_to "All Users", users_path %></li>
           <% end %>
-
+          <%# 普通用户显示项 %>
           <li>
             <%= link_to chats_path, class: "dropbtn" do %>
                 ChatRoom  <i class="fa fa-wechat"></i>
             <% end %>
           </li>
-          
-
-          <!--<li>
-            <%= link_to user_path(current_user), class: "dropbtn" do %>
-                <%= current_user.name %> <span class="glyphicon glyphicon-user"></span>
-            <% end %>
-          </li> -->
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <%= current_user.name %> 
@@ -35,9 +29,6 @@
               <li><%= link_to "Profile", current_user %></li>
               <li><%= link_to "Settings", edit_user_path(current_user) %></li>
               <li class="divider"></li>
-              <!--<li>
-                <%= link_to "Log out", sessions_logout_path, method: :delete %>
-              </li> -->
               <li>
                 <%= link_to sessions_logout_path, method: :delete do %>
                     loggout <span class="	glyphicon glyphicon-off"></span>
@@ -45,13 +36,16 @@
               </li>
             </ul> 
           </li>
+      <% else %>
+          <%# 未登录用户显示项 %>
+          <li><%= link_to "Home",   root_path %></li>
+          <li><%= link_to "Help",   help_path %></li>  
       <% end %>
+
     </ul>
   </div>
   </div>
 </nav>
-
-<%= render 'layouts/login_panel' %>
 
 
 
