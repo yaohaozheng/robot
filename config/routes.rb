@@ -83,6 +83,7 @@ Rails.application.routes.draw do
   end
 
   resources :friendships
+  resources :prefriendships
 
   root 'homes#home'
 

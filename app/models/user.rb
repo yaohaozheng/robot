@@ -8,6 +8,12 @@ class User < ActiveRecord::Base
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
 
+  has_many :prefriendships
+  has_many :prefriends, :through => :prefriendships
+  has_many :inverse_prefriendships, :class_name => "Prefriendship", :foreign_key => "prefriend_id"
+  has_many :inverse_prefriends, :through => :inverse_prefriendships, :source => :user
+
+
   before_save :downcase_email
   attr_accessor :remember_token
   validates :name, presence: true, length: {maximum: 50}

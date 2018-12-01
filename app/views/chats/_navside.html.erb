@@ -7,6 +7,15 @@
       <li class=<%= chat_active %>>
         <a href="#chat-tab" data-toggle="tab"><i class="fa fa-weixin"></i>聊天</a>
       </li>
+
+      <li class=<%= @friend_want %>> 
+        <a href="#come-tab" data-toggle="tab"><i class="fa fa-book"></i>等待回应</a><!--href是自己定义的，在下面只要id对应就好-->
+      </li>
+
+      <li class=<%= @friend_wanted %>>
+        <a href="#go-tab" data-toggle="tab"><i class="fa fa-book"></i>好友申请</a>
+      </li>
+
     </ul>
   </div>
   <div class="panel-body" id="tab-panel-body">
@@ -37,6 +46,50 @@
                       <i class="fa fa-angle-right"></i> 删除用户
                   <% end %>
                 </div>
+              </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="tab-pane fade in <%= @friend_want %>" id="come-tab">
+        <ul class="list-group">
+          <% @friends_want.each do |user| %>
+              <li class="list-group-item" >
+
+                
+                <%= image_tag "user-icon.png", class: "img-sm" %>
+                <div class="text-muted">
+                    <%= user.name %>
+                </div>
+                
+              
+                <%= link_to prefriendship_path(user), method: :delete, class: 'btn btn-danger btn-block', role: "button", style: "border-radius: 0;margin:0px;" do %>
+                      <i class="fa fa-angle-right"></i> 撤销请求
+                <% end %>
+                
+
+                
+              </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="tab-pane fade in <%= @friend_wanted %>" id="go-tab">
+        <ul class="list-group">
+          <% @friends_wanted.each do |user| %>
+              <li class="list-group-item" >
+
+                <%= image_tag "user-icon.png", class: "img-sm" %>
+                <div class="text-muted">
+                  <%= user.name %>
+                </div>
+<!---通过修改friendships_path为friendships_url已经成功能够路由到create action了，根据错误提示进行的修改-->
+                <%= link_to friendships_url(user.id), method: :post, class: 'btn btn-danger btn-block', role: "button", style: "border-radius: 0;margin:0px;" do %>
+                      <i class="fa fa-angle-right"></i> 同意
+                <% end %>
+                <%= link_to prefriendship_path(user), method: :delete, class: 'btn btn-danger btn-block', role: "button", style: "border-radius: 0;margin:0px;" do %>
+                      <i class="fa fa-angle-right"></i> 拒绝
+                <% end %>
               </li>
           <% end %>
         </ul>

@@ -8,6 +8,8 @@ class ChatsController < ApplicationController
 
   def index
     @friends=current_user.friends+current_user.inverse_friends
+    @friends_want=current_user.prefriends
+    @friends_wanted=current_user.inverse_prefriends
   end
 
   def add_user
@@ -69,6 +71,8 @@ class ChatsController < ApplicationController
     @new_message = Message.new
     @users_in_chat= @chat.users-[current_user]
     @friends=current_user.friends+current_user.inverse_friends
+    @friends_want=current_user.prefriends
+    @friends_wanted=current_user.inverse_prefriends
     @friends_out_chat=@friends-@chat.users
   end
 
