@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'static_pages/home'
+
+  get 'static_pages/help'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -59,14 +63,14 @@ Rails.application.routes.draw do
       get :index_json
     end
   end
-  resources :salaries
-  resources :performances
-  resources :announcements
-  resources :materials
+  # resources :salaries
+  # resources :performances
+  # resources :announcements
+  # resources :materials
   # resources :articles
-  resources :departments
-  resources :companynews
-  resources :vacation
+  # resources :departments
+  # resources :companynews
+  # resources :vacation
 
   resources :messages do
     collection do
@@ -84,8 +88,10 @@ Rails.application.routes.draw do
 
   resources :friendships
 
-  root 'homes#home'
-
+  # root 'homes#home'
+  root 'static_pages#home'
+  get  '/help',    to: 'static_pages#help'
+  
   get 'sessions/login' => 'sessions#new'
   post 'sessions/login' => 'sessions#create'
   delete 'sessions/logout' => 'sessions#destroy'
