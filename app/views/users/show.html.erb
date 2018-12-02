@@ -1,16 +1,36 @@
+<body>
 <div class="row">
   <aside class="col-md-4">
-    <section class="user_info">
-      <h1>个人信息</h1>
-      <h2>用户名</h2>
-      <%= @user.name %>
-      <h2>邮箱</h2>
-      <%= @user.email %>
-      <h2>密码</h2>
-      <%= @user.password %>
-      <h2>电话号码</h2>
-      <%= @user.phonenumber %>
-      <%= link_to 'Edit',edit_user_path(@user) %>
-    </section>
+    <div class="container-fluid" style="background:#FAEBD7">
+      <section class="user_info">
+        <form>
+            <fieldset style="width:240px">
+              <legend><h1>个人信息</h1></legend>
+                <div class="form-group">
+                  <li><lable class="col-sm-5 control-lable">用户名:</lable>
+                    <div class="col-sm-7">
+                      <%= @user.name %>
+                    </div>
+                  </li>
+                  <li>
+                    <lable class="col-sm-5 control-lable">邮箱:</lable>
+                      <div class="col-sm-7">
+                        <%= @user.email %>
+                      </div>
+                  </li>
+                  <li>
+                    <lable class="col-sm-5 control-lable">电话号码:</lable>
+                      <div class="col-sm-7">
+                        <%= @user.phonenumber %>
+                      </div>
+                  </li>
+                  <hr/>
+                  <%= link_to '修改个人信息',edit_user_path(@user) %>
+              </div>
+          </fieldset>
+        </form>
+      </section>
+  </div>
   </aside>
 </div>
+</body>
