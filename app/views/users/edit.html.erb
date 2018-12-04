@@ -1,12 +1,15 @@
-<h1>Update your profile</h1>
-
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-  
-    <div class="gravatar_edit">
+    <h1>Update your profile</h1>
+    <!--<div class="gravatar_edit">
       <%= gravatar_for @user %>
       <a href="http://gravatar.com/emails" target="_blank">change</a>
-    </div>
+    </div>-->
+    <!--修改用户头像-->
+    <%= simple_form_for(@user) do |form| %>
+      <%= form.input :avatar, as: :file %>
+      <%= form.submit %>
+    <% end %>
     <%= simple_form_for(@user) do |f| %>
       <%= render 'shared/error_messages' %>
 
