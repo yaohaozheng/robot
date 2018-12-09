@@ -13,7 +13,7 @@ gem 'bootstrap-will_paginate'
 gem 'simple_form', '~> 4.0'
 
 # for download
-gem 'paperclip'
+gem 'paperclip', '~> 6.1'
 
 # for seed
 gem 'faker', '~> 1.6.3'

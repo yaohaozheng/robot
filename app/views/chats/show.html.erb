@@ -59,8 +59,12 @@
       <div class="panel-footer">
         <%= form_for @new_message, remote: true do |f| %><!--发送对应的@new_message是chats_controller中的Message.new-->
             <div class="input-group">
+              <div contenteditable="true">这是一段可编辑的段落。请试着编辑该文本。</div>
               <%= f.text_field :body, class: "form-control input-sm", placeholder: "Type your message here..." %>
-              <span class="input-group-btn"> <%= f.submit "发送", class: "btn btn-warning btn-sm" %> </span>
+              <%= f.text_area :body, placeholder: "Type your message here..." %>
+              <span class="input-group-btn">
+                <%= f.submit "发送", class: "btn btn-warning btn-sm" %>
+              </span>
               <%= hidden_field_tag :chat_room, @chat.id %>
             </div>
         <% end %>
