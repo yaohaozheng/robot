@@ -16,6 +16,18 @@ User.create!(
   status: Faker::Company.profession,
   admin: true
   )
+
+User.create(
+  name: "robot",
+  email: "robot@test.com",
+  password: 'password',
+  role: Faker::Number.between(1, 4),
+  sex: ['male', 'female'].sample,
+  phonenumber: Faker::PhoneNumber.phone_number,
+  status: Faker::Company.profession
+  )
+
+
 (1..100).each do |index|
   User.create(
       name: "user#{index}",
@@ -28,7 +40,8 @@ User.create!(
   )
 end
 
-User.first.friendships.create(:friend_id => 2)
-User.first.friendships.create(:friend_id => 3)
+#User.first.friendships.create(:friend_id => 2)
+#User.first.friendships.create(:friend_id => 3)
+
 
   

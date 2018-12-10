@@ -57,7 +57,7 @@
       </div>
 
       <div class="panel-footer">
-        <%= form_for @new_message, remote: true do |f| %>
+        <%= form_for @new_message, remote: true do |f| %><!--发送对应的@new_message是chats_controller中的Message.new-->
             <div class="input-group">
               <div contenteditable="true">这是一段可编辑的段落。请试着编辑该文本。</div>
               <%= f.text_field :body, class: "form-control input-sm", placeholder: "Type your message here..." %>
@@ -73,7 +73,12 @@
   </div>
 
   <div class="col-sm-3">
-    <%= render 'chat_info' %>
+    <%= render 'chat_info' %><!--此处嵌入了房间信息-->
+  </div>
+  <div class="col-sm-3">
+    <%= if @chat.users[0].name=="robot" 
+          render 'evaluation'       
+        end %>  
   </div>
 </div>
 

@@ -243,6 +243,7 @@ DEPENDENCIES
   faye
   jbuilder (~> 2.0)
   jquery-rails
+  json
   paperclip (~> 6.1)
   rails (= 4.2.5.2)
   rails_admin (~> 0.8.1)
@@ -260,4 +261,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   1.16.2
+   1.17.1

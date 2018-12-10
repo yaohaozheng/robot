@@ -26,6 +26,7 @@ class ChatsController < ApplicationController
   end
 
   def create
+    #byebug
     user=User.find_by_id(params[:users])
 
     current_user.chats.each do |chat|
