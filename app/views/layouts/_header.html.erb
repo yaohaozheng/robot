@@ -12,12 +12,12 @@
       <% if current_user %>
           <%# 管理员显示项 %>
           <% if current_user.admin? %>
-            <li><%= link_to "All Users", users_path %></li>
+            <li><%= link_to "管理所有用户", users_path %></li>
           <% end %>
           <%# 普通用户显示项 %>
           <li>
             <%= link_to chats_path, class: "dropbtn" do %>
-                ChatRoom  <i class="fa fa-wechat"></i>
+                聊天室<i class="fa fa-wechat"></i>
             <% end %>
           </li>
           <li class="dropdown">
@@ -26,12 +26,16 @@
               <span class="glyphicon glyphicon-user"></span><b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-              <li><%= link_to "Profile", current_user %></li>
-              <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+              <li><%= link_to "个人资料", current_user %></li>
+              <li>
+                <%= link_to edit_user_path(current_user) do %>
+                  修改信息
+                <% end%>
+              </li>
               <li class="divider"></li>
               <li>
                 <%= link_to sessions_logout_path, method: :delete do %>
-                    loggout <span class="	glyphicon glyphicon-off"></span>
+                    <span class="glyphicon glyphicon-off">&nbsp;退出</span>
                 <% end %>
               </li>
             </ul> 
@@ -39,7 +43,6 @@
       <% else %>
           <%# 未登录用户显示项 %>
           <li><%= link_to "Home",   root_path %></li>
-          <li><%= link_to "Help",   help_path %></li>  
       <% end %>
 
     </ul>

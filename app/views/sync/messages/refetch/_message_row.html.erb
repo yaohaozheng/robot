@@ -1,6 +1,7 @@
 <li class="mar-btm">
   <div class="media-<%= current_user.id==message.user.id ? 'right' : 'left' %>">
-    <%= image_tag "user-icon.png", class: "img-sm" %>
+    <!--<%= image_tag "user-icon.png", class: "img-sm" %>-->
+    <%= image_tag message.user.avatar.url(:thumb) %>
   </div>
   <div class="media-body pad-hor <%= "speech-right" if current_user.id==message.user.id %>">
     <div class="speech">
@@ -10,7 +11,8 @@
           <%= message.created_at.to_formatted_s(:db) %>
         </text>
       </p>
-      <p style="margin-bottom: 5px; margin-top: 5px;"><%= message.body %></p>
+      <%= image_tag message.img.url(:thumb) if message.img.exists? %>
+      <pre style="border: 0!important; background-color: transparent!important; margin-bottom: 5px; margin-top: 5px;"><%= message.body %></pre>
     </div>
   </div>
 </li>

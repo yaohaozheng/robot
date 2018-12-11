@@ -15,11 +15,15 @@ module SessionsHelper
   end
 
   # Returns the user corresponding to the remember token cookie.
+  #获取当前登录用户，如未登录，则为nil.@current_user这个实例变量是为了避免每次调用current_user方法都去查询一遍数据库的情况。
   def current_user
+    #判断seession
     if session[:user_id]
       @current_user||= User.find_by(id: session[:user_id])
+    #判断cookies
     elsif cookies.signed[:user_id]
       user = User.find_by(id: cookies.signed[:user_id])
+      #如果cookies中保存了，再用authenticated?这个方法判断cookies[:remeber_token]或者数据库中的remeber_digest是否一致。
       if user && user.user_authenticated?(:remember, cookies[:remember_token])
         log_in user
         @current_user = user
