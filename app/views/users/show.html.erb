@@ -1,28 +1,33 @@
-<div class="container text-center">
-    <div class="row">
-      <div class="col-lg-4">
+<div class="container text-center">    
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6 well">
+      <div class="alert alert-success fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+        <p><strong>你好，<%= @user.name %>!</strong></p>
+        请点击右上角的账号修改个人资料
+      </div>  
+      <h1>个人信息</h1>      
+      <div class="well">
+        <%= image_tag @user.avatar.url(:medium) %>
       </div>
-      <div class="col-lg-4 well">
-        <div class="alert alert-success fade in">
-          <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-          <p><strong>你好，<%= @user.name %>!</strong></p>
-        </div>
-        <!--div class="well">
-          <%= image_tag @user.avatar.url(:thumb) %>
-        </div-->
-        <div class="well">
-          <h1>个人信息</h1>
-          <div style="text-align:justify">
-            <p><span class="label label-default">用户名:</span> <%= @user.name %> </p>
-            <p><span class="label label-default">邮箱:</span> <%= @user.email %> </p>
-            <p><span class="label label-default">电话号码:</span> <%= @user.phonenumber %> </p>
+      <div class="well">
+        <div class="row">
+          <div class="col-sm-3"></div>
+          <div class="col-sm-3 text-right">
+            <p><span class="label label-default">用户名:</span></p>
+            <p><span class="label label-default">邮箱:</span></p>
+            <p><span class="label label-default">电话号码:</span></p>
           </div>
+          <div class="col-sm-6 text-left">
+            <p> <%= @user.name %> </p>
+            <p> <%= @user.email %> </p>
+            <p> <%= @user.phonenumber %> </p>
+          </div>   
         </div>
-
-        <%= link_to '修改个人信息',edit_user_path(@user) %>
       </div>
-      <div class="col-lg-4">
-      </div>
+      <%#= link_to '修改个人信息',edit_user_path(@user) %>
     </div>
+    <div class="col-sm-3"></div>
   </div>
 </div>

@@ -32,8 +32,8 @@ class User < ActiveRecord::Base
 
   validates :password, presence: true, length: {minimum: 6}, allow_nil: true
 
-  #paperclip Quick Start
-  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  #paperclip 上传头像
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "50x50>" }, default_url: "images/no-avatar.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
   
   def self.filter_by_type(type)
