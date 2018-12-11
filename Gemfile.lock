@@ -243,6 +243,7 @@ DEPENDENCIES
   faye
   jbuilder (~> 2.0)
   jquery-rails
+  json
   paperclip (~> 6.1)
   rails (= 4.2.5.2)
   rails_admin (~> 0.8.1)
