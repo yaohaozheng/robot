@@ -26,7 +26,7 @@
               <li class="list-group-item" style="padding: 0px; margin-bottom: 0px;">
 
                 <button class="btn btn-default btn-block" data-toggle="collapse" data-target="#user-<%= user.id %>" id="tab-contact-default">
-                  <%= image_tag "user-icon.png", class: "img-sm" %>
+                  <%= image_tag user.avatar.url(:thumb) %>
                   <div class="text-muted">
                     <%= user.name %>
                   </div>

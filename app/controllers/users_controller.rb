@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   include SessionsHelper
-  before_action :set_user, except: [:index, :new, :index_json]
+  before_action :set_user, except: [:index, :new, :create, :index_json]
   before_action :logged_in, only: [:show, :index]
-  before_action :correct_user, only: :show
+  #before_action :correct_user, only: :show
   before_action :admin_user,     only: :destroy
   # before_action :logged_in_user, only: [:index, :edit, :update]
 
@@ -18,9 +18,10 @@ class UsersController < ApplicationController
   def create
     @user=User.new(user_params)
     if @user.save
-      @user.create_salary
-      @user.create_performance
-      redirect_to users_path, flash: {success: "添加成功"}
+      log_in @user
+      #@user.create_salary
+      #@user.create_performance
+      redirect_to @user, flash: {success: "添加成功"}
     else
       flash[:warning] = "账号信息填写有误,请重试"
       render 'new'

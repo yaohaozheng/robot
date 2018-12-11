@@ -50,7 +50,7 @@ class MessagesController < ApplicationController
   end
 
   def message_params
-    params.require(:message).permit(:body)
+    params.require(:message).permit(:body, :img)
   end
 
   def robot(text)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181204091002) do
+ActiveRecord::Schema.define(version: 20181205101621) do
 
   create_table "chats", force: :cascade do |t|
     t.string   "name"
@@ -45,8 +45,12 @@ ActiveRecord::Schema.define(version: 20181204091002) do
     t.text     "body"
     t.integer  "user_id"
     t.integer  "chat_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "img_file_name"
+    t.string   "img_content_type"
+    t.integer  "img_file_size",    limit: 8
+    t.datetime "img_updated_at"
   end
 
   add_index "messages", ["chat_id"], name: "index_messages_on_chat_id"
