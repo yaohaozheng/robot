@@ -28,7 +28,7 @@ User.create(
   )
 
 
-(1..100).each do |index|
+(1..10).each do |index|
   User.create(
       name: "user#{index}",
       email: "user#{index}@test.com",
