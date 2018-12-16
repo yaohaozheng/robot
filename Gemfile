@@ -13,6 +13,8 @@ gem 'bootstrap-will_paginate'
 gem 'puma', '~> 3.0'
 # ensure applications get the most out of the Heroku platform
 gem 'rails_12factor'
+# 需要使用正确的ruby版本
+ruby '2.3.7'
 #simple form
 gem 'simple_form', '~> 4.0'
 
