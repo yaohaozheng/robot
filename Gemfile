@@ -9,6 +9,9 @@ gem 'rails_admin', '~> 0.8.1'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 
+# Use Puma as the app server
+gem 'puma', '~> 3.0'
+
 #simple form
 gem 'simple_form', '~> 4.0'
 
