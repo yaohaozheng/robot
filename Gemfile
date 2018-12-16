@@ -11,7 +11,8 @@ gem 'bootstrap-will_paginate'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
-
+# ensure applications get the most out of the Heroku platform
+gem 'rails_12factor'
 #simple form
 gem 'simple_form', '~> 4.0'
 
