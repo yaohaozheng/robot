@@ -64,7 +64,7 @@ gem 'json'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 group :production do
-  gem 'pg', "  ~> 0.12.0"
+  gem 'pg', '~> 0.18.4'
 end
 
 group :development, :test do
