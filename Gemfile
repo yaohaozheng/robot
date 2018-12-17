@@ -9,6 +9,12 @@ gem 'rails_admin', '~> 0.8.1'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 
+# Use Puma as the app server
+gem 'puma', '~> 3.0'
+# ensure applications get the most out of the Heroku platform
+gem 'rails_12factor'
+# 需要使用正确的ruby版本
+ruby '2.3.7'
 #simple form
 gem 'simple_form', '~> 4.0'
 
@@ -27,7 +33,8 @@ gem 'render_sync'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.2'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+#在开发和测试阶段用，产品阶段用pg
+#gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -56,10 +63,15 @@ gem 'json'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+group :production do
+  gem 'pg', '~> 0.18.4'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3'
 end
 
 group :development do
