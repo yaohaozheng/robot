@@ -9,11 +9,11 @@
       </li>
 
       <li class=<%= @friend_want %>>
-        <a href="#come-tab" data-toggle="tab"><i class="fa fa-clock-o"></i><p>等待回应</p></a><!--href是自己定义的，在下面只要id对应就好-->
+        <a href="#come-tab" data-toggle="tab"><i class="fa fa-clock-o"></i><p>待回复</p></a><!--href是自己定义的，在下面只要id对应就好-->
       </li>
 
       <li class=<%= @friend_wanted %>>
-        <a href="#go-tab" data-toggle="tab"><i class="fa fa-user-plus"></i><p>好友申请</p></a>
+        <a href="#go-tab" data-toggle="tab"><i class="fa fa-user-plus"></i><p>申请</p></a>
       </li>
 
     </ul>
@@ -33,19 +33,20 @@
                 </button>
 
                 <div id="user-<%= user.id %>" class="collapse">
-                  <%= form_for Chat.new, url: chats_path, method: :post do |f| %>
+                    <%= form_for Chat.new, url: chats_path, method: :post do |f| %>
                       <%= hidden_field_tag :users, [user.id] %>
-                      <%= button_tag(:class => "btn btn-success btn-block", style: "border-radius: 0;") do %>
+                      <%= button_tag(:class => "btn btn-success btn-sm") do %>
                           <i class="fa fa-angle-right"></i> 发起聊天
                       <% end %>
+                      <%= link_to user_path(user), class: 'btn btn-success btn-sm', role: "button" do %>
+                          <i class="fa fa-angle-right"></i> 用户详情
+                      <% end %>
+                      <%= link_to friendship_path(user), method: :delete, class: 'btn btn-danger btn-sm', role: "button", style: "margin:5px;" do %>
+                          <i class="fa fa-angle-right"></i> 删除用户
+                      <% end %>
                   <% end %>
-                  <%= link_to user_path(user), class: 'btn btn-info btn-block', role: "button", style: "border-radius: 0" do %>
-                      <i class="fa fa-angle-right"></i> 用户详情
-                  <% end %>
-                  <%= link_to friendship_path(user), method: :delete, class: 'btn btn-danger btn-block', role: "button", style: "border-radius: 0;margin:0px;" do %>
-                      <i class="fa fa-angle-right"></i> 删除用户
-                  <% end %>
-                </div>
+
+                  </div>
               </li>
           <% end %>
         </ul>
@@ -61,13 +62,9 @@
                 <div class="text-muted">
                     <%= user.name %>
                 </div>
-
-
                 <%= link_to prefriendship_path(user), method: :delete, class: 'btn btn-danger btn-block', role: "button", style: "border-radius: 0;margin:0px;" do %>
                       <i class="fa fa-angle-right"></i> 撤销请求
                 <% end %>
-
-
 
               </li>
           <% end %>
