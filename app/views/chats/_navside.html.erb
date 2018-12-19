@@ -2,18 +2,18 @@
   <div class="panel-heading">
     <ul class="nav nav-tabs">
       <li class=<%= contact_active %>>
-        <a href="#contact-tab" data-toggle="tab"><i class="fa fa-book"></i>通讯录</a>
+        <a href="#contact-tab" data-toggle="tab"><i class="fa fa-book"></i><p>通讯录</p></a>
       </li>
       <li class=<%= chat_active %>>
-        <a href="#chat-tab" data-toggle="tab"><i class="fa fa-weixin"></i>聊天</a>
+        <a href="#chat-tab" data-toggle="tab"><i class="fa fa-weixin"></i><p>聊天</p></a>
       </li>
 
-      <li class=<%= @friend_want %>> 
-        <a href="#come-tab" data-toggle="tab"><i class="fa fa-book"></i>等待回应</a><!--href是自己定义的，在下面只要id对应就好-->
+      <li class=<%= @friend_want %>>
+        <a href="#come-tab" data-toggle="tab"><i class="fa fa-clock-o"></i><p>等待回应</p></a><!--href是自己定义的，在下面只要id对应就好-->
       </li>
 
       <li class=<%= @friend_wanted %>>
-        <a href="#go-tab" data-toggle="tab"><i class="fa fa-book"></i>好友申请</a>
+        <a href="#go-tab" data-toggle="tab"><i class="fa fa-user-plus"></i><p>好友申请</p></a>
       </li>
 
     </ul>
@@ -56,19 +56,19 @@
           <% @friends_want.each do |user| %>
               <li class="list-group-item" >
 
-                
+
                 <%= image_tag "user-icon.png", class: "img-sm" %>
                 <div class="text-muted">
                     <%= user.name %>
                 </div>
-                
-              
+
+
                 <%= link_to prefriendship_path(user), method: :delete, class: 'btn btn-danger btn-block', role: "button", style: "border-radius: 0;margin:0px;" do %>
                       <i class="fa fa-angle-right"></i> 撤销请求
                 <% end %>
-                
 
-                
+
+
               </li>
           <% end %>
         </ul>
