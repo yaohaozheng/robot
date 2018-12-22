@@ -1,16 +1,24 @@
 class UsersController < ApplicationController
   include SessionsHelper
   before_action :set_user, except: [:index, :new, :create, :index_json]
-  before_action :logged_in, only: [:show, :index]
+  before_action :logged_in_user, only: [:show, :index]
   #before_action :correct_user, only: :show
   before_action :admin_user,     only: :destroy
   # before_action :logged_in_user, only: [:index, :edit, :update]
 
   def index
-    # @users = User.all
-    # 使用分页
-    @users = User.paginate(page: params[:page])
+    @users=User.search(params).paginate(:page => params[:page], :per_page => 10)
   end
+
+  def index_json
+    @users=User.search_friends(params, current_user)
+    render json: @users.as_json
+  end
+  # def index
+  #   # @users = User.all
+  #   # 使用分页
+  #   @users = User.paginate(page: params[:page])
+  # end
   def new
     @user=User.new
   end
@@ -51,14 +59,6 @@ class UsersController < ApplicationController
     redirect_to users_path(new: false), flash: {success: "用户删除"}
   end
 
-  def index
-    @users=User.search(params).paginate(:page => params[:page], :per_page => 10)
-  end
-
-  def index_json
-    @users=User.search_friends(params, current_user)
-    render json: @users.as_json
-  end
 
   private
 
@@ -67,10 +67,10 @@ class UsersController < ApplicationController
                                  :phonenumber, :status, :avatar)
   end
 
-# Confirms a logged-in user.
-  def logged_in
+  # 确认是否登陆用户
+  def logged_in_user
     unless logged_in?
-      redirect_to root_url, flash: {danger: '请登陆'}
+      redirect_to sessions_login_url, flash: {danger: '请登陆'}
     end
   end
 

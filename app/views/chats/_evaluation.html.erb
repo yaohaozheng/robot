@@ -1,1 +1,20 @@
-<h2>服务用户数:<%= @chat.users[0].chats.size %></h2>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <i class="fa fa-heart"></i> 评分板块
+  </div>
+  <div class="panel-body">
+    <h3>服务用户数:<%= @chat.users[0].chats.size %></h3>
+    <div>
+      <input id="score" value="0" type="number" class="rating" min=0 max=5 step=0.5 data-size="sm">
+      <input type="submit" value="评分" class=“search_btn” name="submit">
+    </div>
+    <table class="table">
+      <tbody>
+        <tr>
+          <td width="40%"><span class="lable lable-default" >平均分数：</span></td>
+          <td><%= @chat.name %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

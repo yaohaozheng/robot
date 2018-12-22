@@ -63,14 +63,6 @@ Rails.application.routes.draw do
       get :index_json
     end
   end
-  # resources :salaries
-  # resources :performances
-  # resources :announcements
-  # resources :materials
-  # resources :articles
-  # resources :departments
-  # resources :companynews
-  # resources :vacation
 
   resources :messages do
     collection do
@@ -93,6 +85,10 @@ Rails.application.routes.draw do
   root 'static_pages#home'
   get  '/help',    to: 'static_pages#help'
   
+  # 用户注册
+  get  '/signup',  to: 'users#new'
+
+  # 用户登陆和注销
   get 'sessions/login' => 'sessions#new'
   post 'sessions/login' => 'sessions#create'
   delete 'sessions/logout' => 'sessions#destroy'
