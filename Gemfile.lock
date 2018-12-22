@@ -133,7 +133,6 @@ GEM
       mime-types
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
-    pg (0.18.4)
     public_suffix (3.0.3)
     puma (3.12.0)
     rack (1.6.11)
@@ -265,7 +264,6 @@ DEPENDENCIES
   jquery-rails
   json
   paperclip (~> 6.1)
-  pg (~> 0.18.4)
   puma (~> 3.0)
   rails (= 4.2.5.2)
   rails_12factor
