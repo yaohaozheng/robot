@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
   include SessionsHelper
+  before_action :logged_in_user, only: [:show, :index, :edit, :update, :destroy]
+  before_action :correct_user, only: [:show, :edit, :update]
   before_action :set_user, except: [:index, :new, :create, :index_json]
-  before_action :logged_in_user, only: [:show, :index]
-  #before_action :correct_user, only: :show
   before_action :admin_user,     only: :destroy
-  # before_action :logged_in_user, only: [:index, :edit, :update]
 
   def index
     @users=User.search(params).paginate(:page => params[:page], :per_page => 10)
@@ -14,11 +13,6 @@ class UsersController < ApplicationController
     @users=User.search_friends(params, current_user)
     render json: @users.as_json
   end
-  # def index
-  #   # @users = User.all
-  #   # 使用分页
-  #   @users = User.paginate(page: params[:page])
-  # end
   def new
     @user=User.new
   end
@@ -78,8 +72,9 @@ class UsersController < ApplicationController
   end
 
   def correct_user
-    unless current_user == @user or current_user.role == 5
-      redirect_to user_path(current_user), flash: {:danger => '您没有权限浏览他人信息'}
+    @user = User.find(params[:id])
+    unless current_user?(@user)
+      redirect_to root_url, flash: {:danger => '您没有权限浏览他人信息'}
     end
   end
 

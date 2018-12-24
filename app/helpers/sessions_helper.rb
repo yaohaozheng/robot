@@ -45,7 +45,7 @@ module SessionsHelper
     cookies.delete(:user_id)
     cookies.delete(:remember_token)
   end
-
+# 若user和当前用户一样，返回true
   def current_user?(user)
     user == current_user
   end
