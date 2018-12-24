@@ -1,55 +1,35 @@
-<div class="row">
-  <div class="col-sm-7">
-      <%= image_tag "login.jpg"%>
-  </div>
+<div class="container-fluid">
+  <header class="jumbotron hero-spacer">
+    <h1>A Warm Welcome to Rails Chat!</h1>
+    <p>一个Rails Chat测试版本</p>
 
-    <% if current_user %>
-        <h1>hello! <%= current_user.name %></h1>
-    <% else %>
-        
-    <div class="col-sm-5">
+    <h3>
+      目前功能
+    </h3>
+    <li>聊天室消息即时推送</li>
+    <li>支持查找，添加，删除好友</li>
+    <li>创建私人聊天，也支持多人聊天</li>
+    <li>房主可以拉人，踢人</li>
+    <li>房主能转移房屋权限</li>
+    <li>用户个人简介(待添加富文本编辑器)</li>
+    <li>UI界面修改（类似WeChat）</li>
+    <li>管理后台（目前只能删除用户）</li>
+    <h3>
+      TODO
+    </h3>
+    <li>现在的即时推送只限于聊天的消息，其他的推送比如未读信息提醒（包括声音）等还未涉及</li>
+    <li>添加好友需要对方同意，现在是单方面添加</li>
 
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header" style="padding:35px 50px;">
-                <h4><span class="glyphicon glyphicon-lock"></span> 登录</h4>
-            </div>
-            <div class="modal-body" style="padding:40px 50px;">
 
-                <%= form_for(:session, url: sessions_login_path, method: :post, html: {role: 'form'}) do |f| %>
+    <h3>
+      Usage
+    </h3>
+    <li>管理员账号为：admin@test.com，密码为：password</li>
+    <li>测试账号密码分别为: user1@test.com, password （邮箱后的数字代表不同用户）</li>
+    <li>请用两个浏览器分别登陆不同的用户来测试消息的即使推送，注意这两个用户需要互为好友</li>
 
-                    <div class="form-group">
-                    <%= f.label :email, "账号密码登陆" %>
-                    <div class="input-group">
-                        <div class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></div>
-                        <%= f.email_field :email, class: 'form-control', placeholder: "输入邮箱" %>
-                    </div>
-                    </div>
+  </header>
 
-                    <div class="form-group">
-                    <div class="input-group">
-                        <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
-                        <%= f.password_field :password, class: 'form-control', placeholder: "输入密码" %>
-                    </div>
-                    </div>
-
-                    <div class="checkbox">
-                    <label><%= f.check_box :remember_me %>记住我</label>
-                    </div>
-
-                    <%= button_tag(type: "submit", class: "btn btn-primary btn-block") do %>
-                        <span class="glyphicon glyphicon-off"></span> 登陆
-                    <% end %>
-
-                <% end %>
-            </div>
-
-            <div class="modal-footer">
-                <p class="text-center">没有账号?<%= link_to "请注册!", new_user_path %></p>
-            </div>
-
-        </div>
-
-    </div>
-    <% end %>
+  <hr>
+  <hr>
 </div>

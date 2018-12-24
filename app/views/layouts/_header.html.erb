@@ -43,6 +43,8 @@
       <% else %>
           <%# 未登录用户显示项 %>
           <li><%= link_to "Home",   root_path %></li>
+          <li><%= link_to "登陆", sessions_login_path %></li>
+          <li><%= link_to "注册", signup_path %></li>
       <% end %>
 
     </ul>
