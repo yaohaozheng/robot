@@ -21,6 +21,7 @@ class UsersController < ApplicationController
     @user=User.new(user_params)
     if @user.save
       @user.friendships.create(:friend_id => 2)
+      @user.friendships.create(:friend_id => 1)
     end
     if @user.save
       log_in @user

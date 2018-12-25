@@ -16,10 +16,11 @@ class FriendshipsControllerTest < ActionController::TestCase
   #   assert_response :success
   # end
 
-  # test "should create friendship" do
-  #   assert_difference('Friendship.count') do
-  #     post :create, friendship: { create: @friendship.create, destroy: @friendship.destroy, friend_id: @friendship.friend_id, user_id: @friendship.user_id }
-  #   end
+  test "should create friendship" do
+    assert_difference('Friendship.count') do
+      post :create, friendship: { create: @friendship.create, destroy: @friendship.destroy, friend_id: @friendship.friend_id, user_id: @friendship.user_id }
+   end
+  end
 
   #   assert_redirected_to friendship_path(assigns(:friendship))
   # end
@@ -39,11 +40,11 @@ class FriendshipsControllerTest < ActionController::TestCase
   #   assert_redirected_to friendship_path(assigns(:friendship))
   # end
 
-  # test "should destroy friendship" do
-  #   assert_difference('Friendship.count', -1) do
-  #     delete :destroy, id: @friendship
-  #   end
-
+   test "should destroy friendship" do
+     assert_difference('Friendship.count', -1) do
+       delete :destroy, id: @friendship
+     end
+    end
   #   assert_redirected_to friendships_path
   # end
 end
