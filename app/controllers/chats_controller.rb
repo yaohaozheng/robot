@@ -75,6 +75,19 @@ class ChatsController < ApplicationController
     @friends_want=current_user.prefriends
     @friends_wanted=current_user.inverse_prefriends
     @friends_out_chat=@friends-@chat.users
+    @evaluate = Evaluate.new
+    # 计算机器人的平均打分值
+    evals = Evaluate.all
+    sum = 0
+    for e in evals do
+      sum = sum + e.score
+    end
+    @mean = sum*1.0/evals.length*1.0
+    if @mean > 3
+      @s = "机器人很好用"
+    else
+      @s = "机器人糟透了"
+    end
   end
 
   private

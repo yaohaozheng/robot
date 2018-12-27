@@ -74,8 +74,8 @@
   <div class="col-sm-3">
     <%= render 'chat_info' %><!--此处嵌入了房间信息-->
     <% if @chat.users[0].name=="robot"%>
-          <%=render 'evaluation'%>
-        <% end %>
+          <%=render template:'evaluates/new'%>
+    <% end %>
   </div>
 </div>
 
