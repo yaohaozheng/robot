@@ -14,7 +14,7 @@ class FriendshipsController < ApplicationController
       if @inverse_prefriendship!=nil
         @inverse_prefriendship.destroy
       end
-      #flash[:info] =params[:friend_id] #成功输出你是傻逼，但是貌似没有建立friend关系，好像friend_id是空的,这里关系还是挺乱的，主要是查找id等等的问题。
+      
       redirect_to chats_path
     else
       flash[:error] = "无法添加好友"
